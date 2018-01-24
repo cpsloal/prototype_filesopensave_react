@@ -1,4 +1,9 @@
 {
+  "files.exclude": {
+    "node_modules/": true,
+    "build/": true,
+    ".*": true
+  },
   "search.exclude": {
     "build/": true,
     "dist/": true
