@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Landing extends Component {
   render() {
@@ -18,11 +19,13 @@ export default class Landing extends Component {
               and should not be considered anywhere close to proper programming.  
               Also do not use this in any form of real app/code.
             </p><br />
-            {/* <router-link to="/file-open">Go to the Open Dialog Prototype</router-link>
-            <br>
-            <router-link to="/file-save">Go to the Save Dialog Prototype</router-link>
-            <br>
-            <router-link to="/file-open-save">Go to the Open/Save As Dialog Prototype</router-link> */}
+            <Link to="/file-open">Go to the Open Dialog Prototype</Link>
+            <br />
+            <Link to="/file-save">Go to the Save Dialog Prototype</Link>
+            <br />
+            <Link to="/file-open-save">Go to the Open/Save As Dialog Prototype</Link>
+            <br />
+            <Link to="/">Landing Page</Link>            
           </div>
         </div>
       </div>
