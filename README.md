@@ -59,6 +59,13 @@ npm run test
 ```
 
 #### Screenshots
+![Screenshot Landing page](/doc/screenshot-01.png)
+![Screenshot Open page](/doc/screenshot-02.png)
+![Screenshot Open page w/ data](/doc/screenshot-03.png)
+![Screenshot Save page w/ data](/doc/screenshot-04.png)
+![Screenshot Open/Save As page w/o data](/doc/screenshot-05.png)
+![Screenshot Open/Save As page w/ loaded file data](/doc/screenshot-06.png)
+
 ---
 
 This project was generated with [electron-react-redux-boilerplate](https://github.com/jschr/electron-react-redux-boilerplate)@[5f1b91f](https://github.com/jschr/electron-react-redux-boilerplate/tree/5f1b91f0d26220e62b1811ebddd6c6491e7a38fb)
