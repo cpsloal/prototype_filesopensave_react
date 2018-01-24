@@ -1,13 +1,60 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+const {dialog} = require('electron').remote
+const fs = require('fs')
 
 export default class FileOpen extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { fileName: "This is where file content will be shown", fileContent: "No file currently selected" }
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  openSelectedFile () {
+    const fileLocation = this.state.fileName
+
+    fs.readFile(fileLocation, 'utf-8', (err, data) => {
+      if (err) {
+        alert('An error ocurred reading the file :' + err.message)
+        return
+      }
+
+      // Change how to handle the file content
+      this.setState({ fileContent: data })
+      console.log(this.state.fileContent)
+    })
+  }
+
+  open () {
+    console.log('in open');
+    dialog.showOpenDialog({properties: ['openFile'],
+      filters: [
+        {name: 'Structile', extensions: ['txt']}
+      ]}, fileNames => {
+      if (fileNames === undefined) {
+        console.log('No file selected')
+        return
+      }
+
+      this.setState({ fileName: fileNames[0] })
+      console.log(fileNames)
+      console.log(this.state.fileName)
+      this.openSelectedFile()
+    })
+  }
+
+  handleClick() {
+    this.open();
+    console.log('in handle');
+  }
+
   render() {
     return (
       <div className="columns">
         <div className="column">
           <span className="title">
-            Electron File Open/Save Prototype
+            Menu
           </span>
           <br /><br /><br />
           <Link to="/file-open">Go to the Open Dialog Prototype</Link>
@@ -25,14 +72,15 @@ export default class FileOpen extends Component {
             <p>
               This is where we open a file and display it.
             </p>
-            {/* <button @click="open()">Open File</button> */}
           </div>
-          {/* <br />
+          <br />
+          <button onClick={this.handleClick} className="button is-primary">Open File</button>
+          <br />
           <br />
           <div>
-            <pre><b>{{ fileName }}</b></pre>
-            <pre>{{ fileContent }}</pre>
-          </div>  */}
+            <pre><b>{this.state.fileName}</b></pre>
+            <pre>{this.state.fileContent}</pre>
+          </div> 
         </div>
       </div>
     );

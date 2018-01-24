@@ -7,7 +7,7 @@ export default class Landing extends Component {
       <div className="columns">
         <div className="column">
           <span className="title">
-            Electron File Open/Save Prototype
+            
           </span>
         </div>
 
